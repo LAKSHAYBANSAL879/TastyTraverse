@@ -30,7 +30,7 @@ const RestaurantCard = ({ restaurant }) => {
             <h1 className='flex align-middle  ml-32 text-xl font-bold'>{getIconByCategory()}{restaurant.category}</h1>
             <div className='flex justify-center gap-2 font-bold mt-2'>
             <p className='border-r-4 pr-2'>{restaurant.foodItems[0].category}</p>
-            {/* <p>{restaurant.foodItems[1].category}</p> */}
+            <p>{restaurant.foodItems[1].category}</p>
 </div>
         </div>
         </div>

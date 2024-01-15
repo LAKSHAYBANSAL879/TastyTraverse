@@ -18,13 +18,16 @@ const orderSchema = new mongoose.Schema({
           type: Number,
           required: true,
         },
-       
+        restaurantName:{
+          type:String,
+        },
       },
     ],
     customerName: {
       type: String,
       required: true,
     },
+   
 },
 {timestamps:true,
   });

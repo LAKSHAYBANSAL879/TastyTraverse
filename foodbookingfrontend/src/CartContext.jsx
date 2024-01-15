@@ -1,4 +1,5 @@
-import React, { createContext, useState, useContext } from 'react';
+
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 export const CartContext = createContext();
 
@@ -8,14 +9,16 @@ export const useCart = () => {
 
 const CartContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({});
-// const [resturantName,setresturantName]=useState('');
- const addToCart = (itemId, foodItem,resturantName) => {
+
+  const addToCart = (itemId, foodItem,restaurantName) => {
+    console.log('Adding to cart:', itemId, foodItem, restaurantName);
+
     setCartItems((prevItems) => ({
       ...prevItems,
-      [itemId]: { quantity: (prevItems[itemId]?.quantity || 0) + 1, ...foodItem },
+      [itemId]: { ...foodItem,restaurantName, quantity: (prevItems[itemId]?.quantity || 0) + 1 },
     }));
   };
-  
+
   const removeFromCart = (itemId) => {
     if (cartItems[itemId]?.quantity > 0) {
       setCartItems((prevItems) => {
@@ -29,19 +32,18 @@ const CartContextProvider = ({ children }) => {
   const getTotalItems = () => {
     return Object.values(cartItems).reduce((total, item) => total + item.quantity, 0);
   };
+
   const itemTotal = (itemId) => {
     const item = cartItems[itemId];
-  
+
     if (item && item.price && item.quantity) {
       const total = item.price * item.quantity;
-      console.log(total);
       return total;
     }
-  
+
     return 0;
   };
-  
-  
+
   const getTotalCost = () => {
     let totalCost = 0;
 
@@ -51,6 +53,7 @@ const CartContextProvider = ({ children }) => {
 
     return totalCost;
   };
+
   const removeFromCartCompletely = (itemId) => {
     setCartItems((prevItems) => {
       const updatedItems = { ...prevItems };
@@ -58,18 +61,22 @@ const CartContextProvider = ({ children }) => {
       return updatedItems;
     });
   };
-  
+
   const contextValue = {
     cartItems,
+    
     addToCart,
     removeFromCart,
     getTotalItems,
     getTotalCost,
     itemTotal,
-    removeFromCartCompletely
+    removeFromCartCompletely,
   };
 
-  return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={contextValue}>
+      {children}
+    </CartContext.Provider>
+  );
 };
-
 export default CartContextProvider;

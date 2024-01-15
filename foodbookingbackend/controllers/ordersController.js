@@ -7,6 +7,7 @@ exports.newOrder= async (req, res) => {
         totalItems,
         items,
         customerName,
+      
             };
         const newOrder = new Orders(orderData);
       await newOrder.save();

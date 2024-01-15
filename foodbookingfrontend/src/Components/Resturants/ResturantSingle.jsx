@@ -11,7 +11,7 @@ const RestaurantSingle = () => {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [sortOrder, setSortOrder] = useState('asc');
   const [searchTerm, setSearchTerm] = useState('');
-  const { cartItems, addToCart, removeFromCart, getTotalItems } = useCart();
+  const { cartItems, addToCart, removeFromCart, getTotalItems} = useCart();
 
   useEffect(() => {
     const fetchRestaurant = async () => {
@@ -72,21 +72,58 @@ const RestaurantSingle = () => {
     setSortOrder(order);
   };
 
+  // const handleAddToCart = async (itemId, foodItem) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:8080/api/v1/resturant/getResturant/${title}`);
+  //     const { data, success, message } = await response.json();
+  
+  //     if (success) {
+  //       const restaurantName = data.name;
+  //       console.log('foodItem:', foodItem);
+  //       console.log('restaurant:', data);
+  //       console.log('restaurantName:', restaurantName);
+        
+  //       addToCart(itemId, {
+  //         ...foodItem,
+  //         name: foodItem.name,
+  //         price: foodItem.price,
+  //         description: foodItem.description,
+  //         picture: foodItem.picture,
+  //         restaurantName: restaurantName,
+  //       });
+     
+  //     } else {
+  //       console.error('Error fetching restaurant:', message);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error fetching restaurant:', error);
+  //   }
+  // };
   const handleAddToCart = (itemId, foodItem) => {
-    addToCart(itemId, {
+    const restaurantName = restaurant?.name;
+  
+    if (!restaurantName) {
+      console.error('Restaurant name is undefined.');
+      console.log('restaurant:', restaurant);
+      return;
+    }
+  
+    const cartItem = {
       ...foodItem,
-      name: foodItem.name,
-      price: foodItem.price,
-      description: foodItem.description,
-      picture: foodItem.picture,
-    });
+      restaurantName: restaurantName,
+    };
+  
+    console.log('Adding to cart:', itemId, cartItem);
+    
+    addToCart(itemId, cartItem,restaurantName);
+  
   };
   
   const handleRemoveFromCart = (itemId) => {
     removeFromCart(itemId);
   };
-
   console.log('Cart Items:', cartItems);
+
   console.log("total items are",getTotalItems());
   return (
     <div>

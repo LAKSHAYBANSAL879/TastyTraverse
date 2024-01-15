@@ -16,7 +16,7 @@ export const Navbar = () => {
   const {getTotalItems}=useCart();
 
   return (
-    <div className='w-full h-28 flex flex-row justify-around align-middle text-center items-center' style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover' }}>
+    <div className='w-full h-28 flex flex-row justify-around align-middle text-center items-center overflow-hidden' style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover' }}>
       <div>
         <Link to='/'>
           <img src={logo} alt='TastyTraverse.com' className='w-32 p-2' />
