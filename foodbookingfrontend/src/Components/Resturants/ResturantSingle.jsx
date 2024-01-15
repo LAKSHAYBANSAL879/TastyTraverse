@@ -72,33 +72,6 @@ const RestaurantSingle = () => {
     setSortOrder(order);
   };
 
-  // const handleAddToCart = async (itemId, foodItem) => {
-  //   try {
-  //     const response = await fetch(`http://localhost:8080/api/v1/resturant/getResturant/${title}`);
-  //     const { data, success, message } = await response.json();
-  
-  //     if (success) {
-  //       const restaurantName = data.name;
-  //       console.log('foodItem:', foodItem);
-  //       console.log('restaurant:', data);
-  //       console.log('restaurantName:', restaurantName);
-        
-  //       addToCart(itemId, {
-  //         ...foodItem,
-  //         name: foodItem.name,
-  //         price: foodItem.price,
-  //         description: foodItem.description,
-  //         picture: foodItem.picture,
-  //         restaurantName: restaurantName,
-  //       });
-     
-  //     } else {
-  //       console.error('Error fetching restaurant:', message);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error fetching restaurant:', error);
-  //   }
-  // };
   const handleAddToCart = (itemId, foodItem) => {
     const restaurantName = restaurant?.name;
   
@@ -144,7 +117,7 @@ const RestaurantSingle = () => {
           </p>
         </div>
         <div>
-          <div className='flex flex-row gap-20 mt-3 font-bold '>
+          <div className='flex flex-col md:flex-row gap-5 lg:gap-20 mt-3 font-bold '>
             <select className='border-2 rounded-xl p-2 focus:border-black' onChange={(e) => handleCategoryChange(e.target.value)} value={categoryFilter}>
               <option value="all">All Categories</option>
               {['pizza', 'breakfast', 'healthy', 'italian', 'chinese'].map((category) => (
@@ -175,7 +148,7 @@ const RestaurantSingle = () => {
             key={foodItem._id}
             style={{ border: '1px solid #ccc', padding: '10px', margin: '10px', borderRadius: '8px' }}
           >
-            <div className='flex flex-col gap-2 w-3/4'>
+            <div className='flex flex-col gap-2 w-5/6 md:w-3/4'>
               <h4 className='text-2xl font-bold'>{foodItem.name}</h4>
               <p className='font-bold text-xl'>Rs:{foodItem.price}</p>
               <p className='font-semibold text-gray-800'>{foodItem.description}</p>

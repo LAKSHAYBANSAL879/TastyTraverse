@@ -79,44 +79,7 @@ const Cart = () => {
       console.error(`Invalid item or quantity for itemId ${itemId}`);
     }
   };
-  
-  
-  // const handleAddToCart = (restaurantName, itemId) => {
-  //   const existingItem = cartItems[itemId];
-  
-  //   if (existingItem && existingItem.quantity !== undefined) {
-  //     const newItem = {
-  //       ...existingItem,
-  //       quantity: existingItem.quantity + 1,
-  //       restaurantName: cartItems[itemId]?.restaurantName, // Use the restaurantName from cartItems
-  //     };
-  
-  //     console.log("Added to cart:", newItem);
-  //     console.log(cartItems[itemId]?.restaurantName);
-  
-  //     addToCart(itemId, newItem);
-  //   } else {
-  //     console.error(`Invalid item or quantity for itemId ${itemId}`);
-  //   }
-  // };
-  
-  // const handleAddToCart = (restaurantName, itemId) => {
-  //   const existingItem = cartItems[itemId];
-  
-  //   if (existingItem && existingItem.quantity !== undefined) {
-  //     const newItem = {
-  //       ...existingItem,
-  //       quantity: existingItem.quantity + 1,
-  //       restaurantName: restaurantName,
-  //     };
-  // console.log(restaurantName);
-  //     addToCart(itemId, newItem,restaurantName);
-  //   } else {
-  //     console.error(`Invalid item or quantity for itemId ${itemId}`);
-  //   }
-  // };
-  
-  
+
   const handleRemoveItem = (itemId) => {
     const isConfirmed = window.confirm("Are you sure you want to remove this item from the cart?");
     if (isConfirmed) {
@@ -196,7 +159,7 @@ const Cart = () => {
   return (
     <div className=" overflow-hidden">
       <h2 className="ml-20 mt-2 mb-2 text-4xl font-bold ">My Cart</h2>
-      <div className="flex flex-row w-full gap-40 mb-2 ml-56 text-xl font-bold">
+      <div className="flex flex-row w-full  justify-evenly ml-10  mb-2  text-xl font-bold">
         <h1>Items</h1>
         <h1>Item Name</h1>
         <h1>Price</h1>
@@ -218,10 +181,10 @@ const Cart = () => {
           <hr />
         </div>
       ))}
-      <div className="flex flex-row ">
-        <div className="flex flex-col w-1/2">
+      <div className="flex flex-col ml-auto items-center lg:flex-row lg:ml-1">
+        <div className="flex flex-col w-full  lg:w-1/2">
           <h1 className="text-4xl font-bold ml-10 mt-2 mb-2">Cart Total</h1>
-          <div className="flex flex-col justify-around ml-10 text-xl gap-2 font-bold p-2 w-1/2">
+          <div className="flex flex-col justify-around  ml-10 text-xl gap-2 font-bold p-2 lg:w-1/2">
             <p className="flex justify-between border-b-4  border-b-gray-400 flex-row"><span>Total Items: </span> <span>{getTotalItems()}</span></p>
             <p className="flex justify-between border-b-4 border-b-gray-400 flex-row"><span>Delivery Charges: </span> <span>Free</span></p>
             <p className="flex justify-between border-b-4 border-b-gray-400 flex-row"><span>Total Cost: </span> <span className="text-red-500 text-xl">Rs{getTotalCost()}</span></p>
@@ -229,7 +192,7 @@ const Cart = () => {
             <button onClick={handleCheckout} className="bg-red-500 text-white rounded-xl p-2">Proceed to Checkout</button>
           </div>
         </div>
-        <div className="flex flex-col align-middle w-1/2">
+        <div className="flex flex-col align-middle lg:w-1/2">
           <h1 className="text-4xl font-bold ml-10 mt-2 mb-2">Having Coupon?</h1>
           <input type="text" name="coupon" id="coupon" className="border-2 border-gray-400 ml-8 mt-2 p-2 rounded-2xl w-1/2 font-bold text-xl" placeholder="Enter your coupon code " value={couponCode} onChange={ev => setCouponCode(ev.target.value)} />
           <button className="bg-red-500 w-fit ml-10 mt-3 font-bold text-xl text-white rounded-xl p-2" onClick={(e) => { e.preventDefault(); couponFunc(); }}>Apply</button>

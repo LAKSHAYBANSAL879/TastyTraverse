@@ -33,7 +33,7 @@ exports.signup = async (req, res) => {
               password,
               phone,
               address,
-              role: 'admin',  // Set the role as 'admin'
+              role: 'admin', 
           });
       } else {
           // If admin(s) exist, create a regular user

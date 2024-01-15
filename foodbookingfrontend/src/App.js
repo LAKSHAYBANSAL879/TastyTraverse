@@ -16,6 +16,7 @@ import NonVeg from "./Components/Home/NonVeg";
 import Payments from "./Components/Cart/Payments";
 import Successful from "./Components/Cart/Successful";
 import Abort from "./Components/Cart/Abort";
+import ForgotPassword from "./Components/Signup/ForgotPassword";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
     <Route path='/payments' element={<Payments/>}/>
     <Route path='/success' element={<Successful/>}/>
     <Route path='/cancel' element={<Abort/>}/>
+<Route path='/forgotPassword' element={<ForgotPassword/>} />
 
 
 

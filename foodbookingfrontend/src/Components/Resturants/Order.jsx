@@ -22,7 +22,8 @@ const Order = () => {
 
         if (success) {
           if (user && user.name) {
-            const groupedOrders = data.reduce((acc, order) => {
+            const filteredOrders = data.filter(order => order.customerName === user.name);
+            const groupedOrders = filteredOrders.reduce((acc, order) => {
               const restaurantName = order.items && order.items.length > 0 ? order.items[0].restaurantName || 'Tasty Traverse' : 'Tasty Traverse';
 
               if (!acc[restaurantName]) {

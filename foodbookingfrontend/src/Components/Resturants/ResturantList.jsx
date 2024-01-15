@@ -14,7 +14,7 @@ const RestaurantCard = ({ restaurant }) => {
       };
     
   return (
-    <Link to={`/resturant/${restaurant.name}`} className='w-1/4' style={{ border: '1px solid #ccc', padding: '10px', margin: '20px', borderRadius: '8px' }}>
+    <Link to={`/resturant/${restaurant.name}`} className='sm:w-1/3 w-3/4 lg:w-1/4' style={{ border: '1px solid #ccc', padding: '10px', margin: '20px', borderRadius: '8px' }}>
       <img src={restaurant.image || "https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png"} alt={restaurant.name} style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '8px' }} />
       <div className='flex flex-col justify-center align-middle'>
         <div className='flex mx-auto mt-2'>
@@ -27,7 +27,7 @@ const RestaurantCard = ({ restaurant }) => {
       
         </div>
         <div className='flex flex-col mt-2'>
-            <h1 className='flex align-middle  ml-32 text-xl font-bold'>{getIconByCategory()}{restaurant.category}</h1>
+            <h1 className='flex align-middle ml-32 sm:ml-16 lg:ml-32 text-xl font-bold'>{getIconByCategory()}{restaurant.category}</h1>
             <div className='flex justify-center gap-2 font-bold mt-2'>
             <p className='border-r-4 pr-2'>{restaurant.foodItems[0].category}</p>
             <p>{restaurant.foodItems[1].category}</p>
